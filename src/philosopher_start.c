@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 11:21:58 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/24 16:16:15 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:22:15 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void forks_take(pthread_mutex_t *fork_left, pthread_mutex_t *fork_right);
 void forks_leave(pthread_mutex_t *fork_left, pthread_mutex_t *fork_right);
-int check_if_dead(long last_time_eaten, t_philosopher *p);
+void check_if_dead(long last_time_eaten, t_philosopher *p);
 
 int philosopher_start(t_philosopher *p)
 {
@@ -26,48 +26,35 @@ int philosopher_start(t_philosopher *p)
 		sleep_ms(5);
 	while(1)
 	{
-		if (check_if_dead(last_time_eaten, p))
-			return (0);
+		check_if_dead(last_time_eaten, p);
 		forks_take(p->fork_left, p->fork_right);
-		if (check_if_dead(last_time_eaten, p))
-			return (0);
+		check_if_dead(last_time_eaten, p);
+
 		log_eating(p->log, p->timestamp_init, p->id);
 		sleep_ms(p->time_to_eat);
-		if (check_if_dead(last_time_eaten, p))
-		{
-			forks_leave(p->fork_left, p->fork_right);
-			return (0);
-		}
+		check_if_dead(last_time_eaten, p);
+
 		last_time_eaten = get_current_time_ms();
 		forks_leave(p->fork_left, p->fork_right);
-		if (check_if_dead(last_time_eaten, p))
-			return (0);
+		check_if_dead(last_time_eaten, p);
+
 		log_sleeping(p->log, p->timestamp_init, p->id);
 		sleep_ms(p->time_to_sleep);
-		if (check_if_dead(last_time_eaten, p))
-			return (0);
+		check_if_dead(last_time_eaten, p);
+
 		log_thinking(p->log, p->timestamp_init, p->id);
 	}
 	return (0);
 }
 
-int check_if_dead(long last_time_eaten, t_philosopher *p)
+void check_if_dead(long last_time_eaten, t_philosopher *p)
 {
-	if (pthread_mutex_lock(p->died) == 0)
-	{
-		pthread_mutex_unlock(p->died);
-		return (1);
-	}
 	if (get_current_time_ms() - last_time_eaten > p->time_to_die)
 	{
-		if (pthread_mutex_lock(p->died) != 0)
-			log_died(p->log, p->timestamp_init, p->id);
-		else
-			pthread_mutex_unlock(p->died);
+		printf("DIED\n");
 		pthread_mutex_init(p->died, NULL);
-		return (1);
+		log_died(p->log, p->timestamp_init, p->id);
 	}
-	return (0);
 }
 
 void forks_take(pthread_mutex_t *fork_left, pthread_mutex_t *fork_right)

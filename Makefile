@@ -6,7 +6,7 @@ SRC := src
 
 
 # SRC
-SRCCFILES := philosopher_start.c utils.c log.c time.c
+SRCCFILES := philosopher_start.c log.c time.c utils_threads.c
 SRCCFILES := $(addprefix $(SRC)/, $(SRCCFILES))
 
 
