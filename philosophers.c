@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:40:58 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/24 16:13:48 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:48:29 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main()
 {
 	int i;
-	int	number_of_philosophers = 3;
+	int	number_of_philosophers = 199;
 	pthread_mutex_t mutex[number_of_philosophers];
 	pthread_mutex_t died;
     pthread_t threads[number_of_philosophers];
@@ -33,7 +33,7 @@ int	main()
 		philosopher = malloc(sizeof(t_philosopher));
 		philosopher->number_of_philosophers = number_of_philosophers;
         philosopher->id = i;
-        philosopher->time_to_die = 0;
+        philosopher->time_to_die = 1700;
         philosopher->time_to_eat = 500;
         philosopher->time_to_sleep = 500;
 		philosopher->died = &died;
@@ -50,8 +50,10 @@ int	main()
 		pthread_create(&threads[i], NULL, (void * _Nullable (* _Nonnull)(void * _Nullable)) philosopher_start,philosopher);
 		i++;
 	}
+	while(pthread_mutex_lock(&died));
+	pthread_mutex_unlock(&died);
 	i = 0;
     while (i < number_of_philosophers)
-        pthread_join(threads[i++], NULL);
+        pthread_detach(threads[i++]);
 	return (0);
 }
