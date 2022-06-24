@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 22:37:12 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/20 15:54:44 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:24:00 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,41 +36,12 @@ pthread_mutex_t died;
 
 void *philosopher_start(void* param)
 {
+
 	t_vars *vars =(t_vars *) param;
-        struct timeval *temp;
-    
+
     while(pthread_mutex_lock(&died) != 0)
     {
-        usleep(5000);
-        if (vars->id % 2 == 1)
-            usleep(1000000);
-        if (vars->count_philosopers == vars->id + 1)
-            pthread_mutex_lock(&mutex[0]);
-        else
-            pthread_mutex_lock(&mutex[vars->id]);
-        if (vars->id == 0)
-            pthread_mutex_lock(&mutex[vars->count_philosopers -1]);
-        else
-            pthread_mutex_lock(&mutex[vars->id -1]);
-            printf("HELLO");
-        gettimeofday(temp, NULL);
-        if (temp->tv_sec - vars->last_time_eaten > vars->time_to_die)
-        	pthread_mutex_init(&died, NULL);
-        usleep(vars->time_to_eat * 1000);
-        printf("%i ate with left time %li\n", vars->id, temp->tv_sec - vars->last_time_eaten);
-        vars->last_time_eaten = temp->tv_sec;
-
-        
-        if (vars->count_philosopers == vars->id + 1)
-            pthread_mutex_unlock(&mutex[0]);
-        else
-            pthread_mutex_unlock(&mutex[vars->id]);
-        if (vars->id == 0)
-            pthread_mutex_unlock(&mutex[vars->count_philosopers -1]);
-        else
-            pthread_mutex_unlock(&mutex[vars->id -1]);
-        
-        usleep(vars->time_to_sleep* 1000);
+        printf("Hello from ID: %i\n", vars->id);
     }
     pthread_mutex_unlock(&died);
     printf("DIED: %i\n", vars->id);
@@ -83,24 +54,25 @@ int main()
     // printf("TIME: %i\n", gettimeofday(time, NULL));
     // printf("TIME: %li\n", time->tv_sec);
     pthread_t threads[NUM_THREADS];
-    
+    int i;
     t_vars *vars;
-    for (int i = 0; i < NUM_THREADS; ++i)
-		pthread_mutex_init(&mutex[i], NULL);
-
-    for (int i = 0; i < NUM_THREADS; ++i) {
+    while (i < NUM_THREADS)
+		pthread_mutex_init(&mutex[i++], NULL);
+    i = 0;
+    while (i < NUM_THREADS)
+    {
         vars = malloc(sizeof(t_vars));
         vars->count_philosopers = NUM_THREADS;
         vars->id = i;
         vars->time_to_die = 2000;
         vars->time_to_eat = 500;
         vars->time_to_sleep = 500;
-        pthread_create(&threads[i], NULL, philosopher_start,(void *) vars);
+        pthread_create(&threads[i], NULL, philosopher_start,NULL);
+        i++;
     }
-    
-    for (int i = 0; i < NUM_THREADS; ++i) {
-        pthread_join(threads[i], NULL);
-    }
+    i = 0;
+    while (i < NUM_THREADS)
+        pthread_join(threads[i++], NULL);
 
     exit(EXIT_SUCCESS);
 }
