@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:43:54 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/24 13:41:35 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/25 09:48:50 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_philosopher
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
 	pthread_mutex_t	*died;
-	pthread_mutex_t	log;
+	pthread_mutex_t	*log;
 }				t_philosopher;
 
 // Start

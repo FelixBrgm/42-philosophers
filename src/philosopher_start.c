@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 11:21:58 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/24 17:22:15 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/25 10:20:19 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int philosopher_start(t_philosopher *p)
 		forks_take(p->fork_left, p->fork_right);
 		check_if_dead(last_time_eaten, p);
 
-		log_eating(p->log, p->timestamp_init, p->id);
+		log_eating(*(p->log), p->timestamp_init, p->id);
 		sleep_ms(p->time_to_eat);
 		check_if_dead(last_time_eaten, p);
 
@@ -38,11 +38,11 @@ int philosopher_start(t_philosopher *p)
 		forks_leave(p->fork_left, p->fork_right);
 		check_if_dead(last_time_eaten, p);
 
-		log_sleeping(p->log, p->timestamp_init, p->id);
+		log_sleeping(*(p->log), p->timestamp_init, p->id);
 		sleep_ms(p->time_to_sleep);
 		check_if_dead(last_time_eaten, p);
 
-		log_thinking(p->log, p->timestamp_init, p->id);
+		log_thinking(*(p->log), p->timestamp_init, p->id);
 	}
 	return (0);
 }
@@ -51,9 +51,10 @@ void check_if_dead(long last_time_eaten, t_philosopher *p)
 {
 	if (get_current_time_ms() - last_time_eaten > p->time_to_die)
 	{
-		printf("DIED\n");
+		pthread_mutex_destroy(p->log);
+		sleep_ms(2);
+		log_died(*(p->log), p->timestamp_init, p->id);
 		pthread_mutex_init(p->died, NULL);
-		log_died(p->log, p->timestamp_init, p->id);
 	}
 }
 
