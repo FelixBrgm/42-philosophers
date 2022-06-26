@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:09:37 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 17:30:48 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:31:09 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void philo_checker(t_philosopher **philos)
 {
 	int	i;
 
+	sleep_ms(10);
 	while (1)
 	{
 		i = 0;

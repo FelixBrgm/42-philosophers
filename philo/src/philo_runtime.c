@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 15:11:52 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 17:42:55 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:35:32 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ int	has_eaten_enough(t_philosopher *p)
 void forks_take(t_philosopher *p)
 {
 	pthread_mutex_lock(p->fork_left);
+	log_fork(*(p->data->log), p->data->timestamp_init, p->id);
 	pthread_mutex_lock(p->fork_right);
+	log_fork(*(p->data->log), p->data->timestamp_init, p->id);
 }
 
 void forks_leave(t_philosopher *p)

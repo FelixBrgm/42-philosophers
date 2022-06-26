@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:33:17 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 17:21:16 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:34:19 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	{
 		if (philosophers[i]->dead)
 		{
-			printf("%ld %i died\n", philosophers[i]->dead, i);
+			printf("%ld %i died\n", philosophers[i]->dead, i + 1);
 			return (0);
 		}
 		i++;
