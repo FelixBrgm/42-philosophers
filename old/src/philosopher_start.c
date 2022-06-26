@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 11:21:58 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/25 10:20:19 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:47:36 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void check_if_dead(long last_time_eaten, t_philosopher *p)
 {
 	if (get_current_time_ms() - last_time_eaten > p->time_to_die)
 	{
-		pthread_mutex_destroy(p->log);
-		sleep_ms(2);
+
 		log_died(*(p->log), p->timestamp_init, p->id);
 		pthread_mutex_init(p->died, NULL);
 	}

@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:40:58 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/25 10:21:14 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:46:34 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main()
 	}
 	while(pthread_mutex_lock(&died));
 	pthread_mutex_unlock(&died);
+	printf("HELLO\n");
 	i = 0;
     while (i < number_of_philosophers)
         pthread_detach(threads[i++]);
