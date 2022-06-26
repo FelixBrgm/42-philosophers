@@ -6,13 +6,13 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:09:37 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:38:47 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/26 19:17:17 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	check_if_dead(t_philosopher *p);
+void	check_if_dead(t_philosopher **philos, t_philosopher *p);
 int		check_if_everyone_has_eaten(t_philosopher **philosophers);
 
 void	philo_checker(t_philosopher **philos)
@@ -24,16 +24,17 @@ void	philo_checker(t_philosopher **philos)
 	{
 		i = 0;
 		while (philos[i])
-			check_if_dead(philos[i++]);
+			check_if_dead(philos, philos[i++]);
 		check_if_everyone_has_eaten(philos);
 	}
 }
 
-void	check_if_dead(t_philosopher *p)
+void	check_if_dead(t_philosopher **philos, t_philosopher *p)
 {
 	if (get_current_time_ms() - p->last_time_eaten > p->data->time_to_die)
 	{
-		p->dead = get_current_time_ms() - p->data->timestamp_init;
+		if (check_if_everyone_has_eaten(philos) == 0)
+			p->dead = get_current_time_ms() - p->data->timestamp_init;
 		pthread_mutex_init(p->data->died, NULL);
 	}
 }
