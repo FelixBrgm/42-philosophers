@@ -6,16 +6,16 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:09:37 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:31:09 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/26 18:38:47 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void check_if_dead(t_philosopher *p);
-int check_if_everyone_has_eaten(t_philosopher **philosophers);
+void	check_if_dead(t_philosopher *p);
+int		check_if_everyone_has_eaten(t_philosopher **philosophers);
 
-void philo_checker(t_philosopher **philos)
+void	philo_checker(t_philosopher **philos)
 {
 	int	i;
 
@@ -23,13 +23,13 @@ void philo_checker(t_philosopher **philos)
 	while (1)
 	{
 		i = 0;
-		while(philos[i])
+		while (philos[i])
 			check_if_dead(philos[i++]);
 		check_if_everyone_has_eaten(philos);
 	}
 }
 
-void check_if_dead(t_philosopher *p)
+void	check_if_dead(t_philosopher *p)
 {
 	if (get_current_time_ms() - p->last_time_eaten > p->data->time_to_die)
 	{
@@ -37,16 +37,19 @@ void check_if_dead(t_philosopher *p)
 		pthread_mutex_init(p->data->died, NULL);
 	}
 }
-int check_if_everyone_has_eaten(t_philosopher **philosophers)
+
+int	check_if_everyone_has_eaten(t_philosopher **philosophers)
 {
 	int	i;
 	int	times_must_eat;
 
 	i = 0;
-	times_must_eat = philosophers[i]->data->number_of_times_each_philosopher_must_eat;
+	times_must_eat
+		= philosophers[i]->data->number_of_times_each_philosopher_must_eat;
 	while (philosophers[i])
 	{
-		if (times_must_eat == -1 || times_must_eat > philosophers[i]->times_eaten)
+		if (times_must_eat == -1
+			|| times_must_eat > philosophers[i]->times_eaten)
 			return (0);
 		i++;
 	}
