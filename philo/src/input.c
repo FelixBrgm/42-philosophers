@@ -6,7 +6,7 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:33:33 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/25 15:39:20 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/26 17:43:28 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	input_parse(t_data *data, int argc, char **argv)
 	if (input_check(argc, argv))
 		return (1);
 	data->number_of_philosophers = ft_atoi(argv[1]);
+	if (data->number_of_philosophers > 250)
+		return (1);
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
@@ -31,6 +33,8 @@ int	input_parse(t_data *data, int argc, char **argv)
 	return (0);
 }
 
+
+// Write a int parsing function
 int	input_check(int argc, char **argv)
 {
 	int	i;
@@ -48,7 +52,7 @@ int	input_check(int argc, char **argv)
 		j = 0;
 		while(argv[i][j])
 		{
-			if (!is_space(argv[i][j] && argv[i][j] > '9' && argv[i][j] < '0' && argv[i][j] != '-'))
+			if (0 == is_space(argv[i][j]) && (argv[i][j] > '9' || argv[i][j] < '0' ))
 				return (1);
 			j++;
 		}

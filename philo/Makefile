@@ -6,7 +6,7 @@ SRC := src
 
 
 # SRC
-SRCCFILES := input.c philo_start.c mutex_utils.c threads_utils.c log.c utils.c
+SRCCFILES := input.c mutex_utils.c log.c utils.c philo_create.c philo_runtime.c philo_init.c time.c philo_checker.c
 SRCCFILES := $(addprefix $(SRC)/, $(SRCCFILES))
 
 
@@ -18,7 +18,7 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	$(AR) $(NAME) $(OFILES)
-	gcc $(NAME) -o philosophers
+	gcc $(NAME) -o philosophers 
 
 clean: 
 	rm -f $(OFILES)
