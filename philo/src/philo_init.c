@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:33:50 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:40:02 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:31 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 void	philo_init(t_philosopher **philosophers, pthread_t *threads)
 {

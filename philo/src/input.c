@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:33:33 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:50:46 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:21 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 #include <limits.h>
 
 int	ft_strlen(char *str);

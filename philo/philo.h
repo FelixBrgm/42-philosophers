@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:43:54 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:46:00 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:49:52 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <pthread.h>
 # include <stdio.h>

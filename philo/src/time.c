@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 13:11:11 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:40:50 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:36 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 long	get_current_time_ms(void)
 {

@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 17:09:37 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 19:17:17 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:27 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 void	check_if_dead(t_philosopher **philos, t_philosopher *p);
 int		check_if_everyone_has_eaten(t_philosopher **philosophers);

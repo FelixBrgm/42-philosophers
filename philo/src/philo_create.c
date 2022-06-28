@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:02:39 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:39:15 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:29 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 t_philosopher	**philo_create(t_data *data, pthread_mutex_t *forks)
 {

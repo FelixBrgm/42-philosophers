@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:34:33 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:37:32 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:18 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 void	log_fork(pthread_mutex_t mutex, long timestamp_init, int id)
 {

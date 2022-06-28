@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:33:17 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 19:18:08 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:53 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philo.h"
 
 void	log_death(t_philosopher **philosophers);
 

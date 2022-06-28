@@ -6,11 +6,11 @@
 /*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 15:11:52 by fbruggem          #+#    #+#             */
-/*   Updated: 2022/06/26 18:40:39 by fbruggem         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:50:33 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 void	check_if_dead(t_philosopher *p);
 void	forks_take(t_philosopher *p);
